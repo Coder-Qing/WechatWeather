@@ -29,8 +29,6 @@ type token struct {
 }
 
 func main() {
-	weather()
-	select {}
 	spec1 := "0 0 8 * * *" // 每天早晨8:00
 	c := cron.New()
 	err := c.AddFunc(spec1, weather)
