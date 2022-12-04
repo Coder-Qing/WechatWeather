@@ -29,7 +29,7 @@ type token struct {
 }
 
 func main() {
-	spec1 := "0 0 8 * * *" // 每天早晨8:00
+	spec1 := "0 0 7 * * *" // 每天早晨7:00
 	c := cron.New()
 	err := c.AddFunc(spec1, weather)
 	if err != nil {
@@ -61,12 +61,14 @@ func weather() {
 		case "oeZ6P5jvFNh2y_h_2UcaoTXBaC2o":
 			city = "西安"
 		case "oQwrq5xAq1dWMJ5vg55MqL7Q9hj0":
-			//cityId = "101270101"
-			cityId = "101270106"
-			//city = "成都"
-			city = "双流"
+			cityId = "101270101"
+			//cityId = "101270106"
+			city = "成都"
+			//city = "双流"
 			fallthrough
 		default:
+			cityId = "101270101"
+			city = "成都"
 			go sendWeather(accessToken, cityId, city, v.Str)
 		}
 	}
